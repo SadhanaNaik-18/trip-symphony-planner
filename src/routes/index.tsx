@@ -71,12 +71,14 @@ function Home() {
 
   return (
     <div className="min-h-screen">
-      <header className="bg-hero text-primary-foreground">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+      <header className="relative text-primary-foreground">
+        <img src="/travel-hero.jpg" alt="" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-hero opacity-80" />
+        <nav className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <span className="font-display text-2xl font-bold">TripSync<span className="text-accent"> AI</span></span>
            <div className="hidden gap-6 text-sm sm:flex"><a href="#plan">Plan</a><a href="#road-maps">Road maps</a><a href="#trip-chat">Ask AI</a><a href="#history">History</a></div>
         </nav>
-        <div className="mx-auto max-w-6xl px-6 pb-24 pt-12">
+        <div className="relative mx-auto max-w-6xl px-6 pb-24 pt-12">
           <p className="mb-3 text-sm uppercase tracking-widest text-accent">Autonomous travel planning agent</p>
           <h1 className="max-w-3xl text-4xl font-bold leading-tight sm:text-6xl">Four AI agents. One perfect trip.</h1>
           <p className="mt-5 max-w-xl opacity-85">Research, budget, routing and personal decisions — orchestrated in seconds.</p>
