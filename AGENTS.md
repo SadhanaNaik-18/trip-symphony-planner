@@ -28,3 +28,7 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+- Trip questions use an AI SDK UI-message streaming route and server-only gateway helpers; this keeps credentials private and supports cancellation.
+- Chat is a single in-memory session, separate from saved trip history; refreshing must not silently persist conversations.
+- Road maps use Google Maps Embed directions with user-entered addresses and selected itinerary legs; no billable server geocoding or Routes proxy is needed.

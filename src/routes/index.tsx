@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { runAgent } from "@/lib/agents.functions";
 import { demoInput, demoResult } from "@/lib/demo-trip";
 import type { AgentKey, TripInput, TripResult } from "@/lib/trip-types";
+import { RoadMap } from "@/components/road-map";
+import { TripChat } from "@/components/trip-chat";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -72,7 +74,7 @@ function Home() {
       <header className="bg-hero text-primary-foreground">
         <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <span className="font-display text-2xl font-bold">TripSync<span className="text-accent"> AI</span></span>
-          <div className="hidden gap-6 text-sm sm:flex"><a href="#plan">Plan</a><a href="#results">Results</a><a href="#history">History</a></div>
+           <div className="hidden gap-6 text-sm sm:flex"><a href="#plan">Plan</a><a href="#road-maps">Road maps</a><a href="#trip-chat">Ask AI</a><a href="#history">History</a></div>
         </nav>
         <div className="mx-auto max-w-6xl px-6 pb-24 pt-12">
           <p className="mb-3 text-sm uppercase tracking-widest text-accent">Autonomous travel planning agent</p>
@@ -146,7 +148,10 @@ function Home() {
             <div className="rounded-xl border bg-card p-6"><h3 className="mb-3 font-bold">Personal tips</h3><ul className="space-y-2 text-sm">{result.decision.tips?.map((o) => <li key={o}>💡 {o}</li>)}</ul></div>
           </section></div>)}
 
-        <section id="history"><h2 className="mb-4 text-2xl font-bold">Saved trips</h2>
+         <RoadMap input={input} result={result} />
+         <TripChat input={input} result={result} />
+
+         <section id="history"><h2 className="mb-4 text-2xl font-bold">Saved trips</h2>
           {history.length === 0 ? <p className="text-muted-foreground">No trips yet — plan one above.</p> :
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{history.map((h) => (
               <div key={h.id} className="rounded-xl border bg-card p-4"><p className="font-semibold">{h.input.origin} → {h.input.destination}</p><p className="text-xs text-muted-foreground">{h.input.days} days · {inr(h.input.budget)} · {h.at}</p>
