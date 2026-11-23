@@ -1,29 +1,19 @@
-# Welcome to your Lovable project
+# TripSync AI – Autonomous Travel Planning Agent
 
-This project was built with [Lovable](https://lovable.dev).
+Four specialized AI agents (Destination Research, Budget Planning, Route & Itinerary Optimizer, Trip Decision & Personalization) coordinated by an orchestrator.
 
-## Build with Lovable
-
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+## Web app (React + Vite + Tailwind)
 ```
+bun install
+bun run dev
+```
+AI runs through server functions (`src/lib/agents.functions.ts`) using Gemini Flash. If AI is unavailable, a demo plan (Bengaluru → Mysuru) is used automatically. Trips are saved in browser history.
 
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+## Optional Python FastAPI backend
+```
+cd backend
+pip install -r requirements.txt
+cp .env.example .env   # add GEMINI_API_KEY
+uvicorn main:app --reload
+```
+`POST /api/plan` runs the full orchestrated workflow.
